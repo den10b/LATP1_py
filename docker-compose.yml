@@ -14,11 +14,11 @@ services:
     networks:
       - app-net
 
-  pyton:
+  python:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: pyton_web
+    container_name: python_web
     restart: always
     environment:
       DATABASE_URL: postgresql://usr:psw@pg:5432/dtb
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - pyton
+      - python
     networks:
       - app-net
 
