@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db = SQLAlchemy(app)
 
+
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -13,14 +14,9 @@ class Student(db.Model):
 
 @app.route('/<int:student_id>')
 def index(student_id):
-    student = Student.query.filter_by(id=student_id).first()
-    return render_template('static/index.html', student_name=student.name)
-
-
-@app.route('/INSERT')
-def index():
-    Student.name=""
-    return
+    # student = Student.query.filter_by(id=student_id).first()
+    student_name='Keks'
+    return render_template('static/index.html', student_name=student_name)
 
 
 if __name__ == '__main__':
