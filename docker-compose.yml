@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   pg:
-    image: my_pg
-    build:
-      context: .
-      dockerfile: Dockerfile.pg
+    image: postgres:latest
     container_name: postgres
     restart: always
     environment:
