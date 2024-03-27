@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   pg:
-    image: postgres:latest
+    image: my_pg
+    build:
+      context: .
+      dockerfile: Dockerfile.pg
     container_name: postgres
     restart: always
     environment:
@@ -13,6 +16,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - app-net
+    ports:
+      - "5444:5432"
 
   python:
     build:
